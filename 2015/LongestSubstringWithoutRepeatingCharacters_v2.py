@@ -11,11 +11,12 @@ class Solution:
         for i, c in enumerate(s):
             pos = m.get(c)
             if pos is not None and pos >= start:
-                max_length = max(max_length, i - start)
                 start = pos + 1
+            else:
+                max_length = max(max_length, i - start + 1)
+
             m[c] = i
 
-        max_length = max(max_length, len(s) - start)
         return max_length
 
 
