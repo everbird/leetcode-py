@@ -6,13 +6,18 @@ class Solution:
     # @param {integer} x
     # @return {boolean}
     def isPalindrome(self, x):
-        n = x
-        m = 0
-        while n > 0:
-            m = m * 10 + (n % 10)
-            n = n // 10
+        if x == 0:
+            return True
 
-        return m == x
+        if x < 0 or x % 10 == 0:
+            return False
+
+        m = 0
+        while m < x:
+            m = m * 10 + (x % 10)
+            x = x // 10
+
+        return m == x or m // 10 == x
 
 
 if __name__ == '__main__':
@@ -22,6 +27,16 @@ if __name__ == '__main__':
     print r
 
     a = 12322
+    s = Solution()
+    r = s.isPalindrome(a)
+    print r
+
+    a = 10
+    s = Solution()
+    r = s.isPalindrome(a)
+    print r
+
+    a = 0
     s = Solution()
     r = s.isPalindrome(a)
     print r
