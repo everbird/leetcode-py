@@ -8,18 +8,15 @@ class Solution:
     def myAtoi(self, str):
         INT_MAX = 2147483647
         INT_MIN = -2147483648
-        r = 0
-        symbol = 1
         str = str.strip()
         if not str:
             return 0
 
-        if str[0] == '-':
-            symbol = -1
-            str = str[1:]
-        elif str[0] == '+':
-            str = str[1:]
+        first_char = str[0]
+        symbol = -1 if first_char == '-' else 1
+        str = str[1:] if first_char in '+-' else str
 
+        r = 0
         for i, c in enumerate(str):
             if c not in '1234567890':
                 break
