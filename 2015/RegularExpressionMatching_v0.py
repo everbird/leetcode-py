@@ -36,7 +36,6 @@ class Solution:
                 if pos != -1:
                     si += pos + len(ps)
 
-                print 'pos:', pos, len(ps), si
                 for c in ps:
                     if si < 0 or not (s[si] == c or c == '.'):
                         return False
