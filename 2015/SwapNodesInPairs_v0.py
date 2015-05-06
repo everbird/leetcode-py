@@ -17,32 +17,22 @@ class Solution:
     # @param {ListNode} head
     # @return {ListNode}
     def swapPairs(self, head):
-        if not head:
-            return None
+        if not head or not head.next:
+            return head
 
-        a = head
-        if not a.next:
-            return a
-
-        r = a.next
-        p = None
-        while a:
-            b = a.next if a else None
+        r = p = ListNode(0)
+        while head and head.next:
+            b = head.next
             c = b.next if b else None
-            if p:
-                if b:
-                    p.next = b
-                else:
-                    p.next = a
-                    break
-            p = a
+            p.next = b
+            p = head
 
-            if a and b:
-                b.next = a
-                a.next = c
-            a = c
+            b.next = head
+            head.next = c
+            head = c
 
-        return r
+        p.next = head
+        return r.next
 
 
 if __name__ == '__main__':
