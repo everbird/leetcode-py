@@ -22,11 +22,7 @@ def comination(candidates, k):
     for i, n in enumerate(candidates):
         items = comination(candidates[i + 1:], k - n)
         for item in items:
-            if not item:
-                item.append(n)
-            else:
-                item = [n] + item
-
+            item = [n] + item
             if item not in r:
                 r.append(item)
 
