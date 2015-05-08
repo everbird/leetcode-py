@@ -19,12 +19,18 @@ def comination(candidates, k):
         return [[]]
 
     r = []
+    p = None
     for i, n in enumerate(candidates):
+        # Speed up!
+        if n == p:
+            continue
+
         items = comination(candidates[i + 1:], k - n)
         for item in items:
             item = [n] + item
             if item not in r:
                 r.append(item)
+        p = n
 
     return r
 
