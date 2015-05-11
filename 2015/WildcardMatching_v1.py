@@ -10,15 +10,9 @@ class Solution:
         if not p:
             return not bool(s)
 
-        if not s:
-            return not bool(p.replace('*', ''))
-
         lens = len(s)
         if len(p) - p.count('*') > lens:
             return False
-
-        if p == '*':
-            return True
 
         r = [True] + [False] * lens
         for k, c in enumerate(p):
