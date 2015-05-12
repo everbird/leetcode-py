@@ -58,4 +58,5 @@ def printr(r):
 
 if __name__ == '__main__':
     s = Solution()
-    print s.solveNQueens(7)
+    r = s.solveNQueens(9)
+    print len(r)
