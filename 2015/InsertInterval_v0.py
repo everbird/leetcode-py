@@ -14,7 +14,7 @@ class Solution:
     # @return {Interval[]}
     def insert(self, intervals, newInterval):
         r = []
-        f = False
+        f = True
         if not intervals:
             return [newInterval]
 
@@ -28,7 +28,6 @@ class Solution:
                 return intervals
 
             elif n.end < newInterval.start:
-                f = True
                 r.append(n)
 
             elif n.start > newInterval.end:
@@ -39,12 +38,8 @@ class Solution:
 
             elif n.start <= newInterval.start and newInterval.end > n.end:
                 newInterval = Interval(n.start, newInterval.end)
-                f = True
             elif newInterval.end <= n.end and newInterval.start < n.start:
                 newInterval = Interval(newInterval.start, n.end)
-                f = True
-            else:
-                f = True
 
         if f:
             r.append(newInterval)
