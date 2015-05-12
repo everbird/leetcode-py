@@ -52,4 +52,5 @@ def printr(r):
 
 if __name__ == '__main__':
     s = Solution()
-    print s.totalNQueens(4)
+    for i in range(4, 10):
+        print s.totalNQueens(i)
