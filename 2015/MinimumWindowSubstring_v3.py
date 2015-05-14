@@ -3,6 +3,7 @@
 
 import collections
 
+
 class Solution:
     # @param {string} s
     # @param {string} t
