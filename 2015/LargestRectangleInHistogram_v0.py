@@ -6,32 +6,19 @@ class Solution:
     # @param {integer[]} height
     # @return {integer}
     def largestRectangleArea(self, height):
-        lenh = len(height)
-        if not lenh:
-            return 0
-
-        if lenh == 1:
-            return height[0]
-
-        b = 0
-        e = lenh - 1
-        max_a = max(height)
-        while b <= e:
-            v = min(height[b:e+1])
-            area = v * (e - b + 1)
-            if max_a < area:
-                max_a = area
-
-            if height[e] > height[b]:
-                while (b+1) <= e and height[b] >= height[b+1]:
-                    b += 1
-
-                b += 1
+        i = 0
+        max_a = 0
+        s = []
+        h = height[:]
+        h.append(0)
+        while i < len(h):
+            if not s or h[i] >= h[s[-1]]:
+                s.append(i)
+                i += 1
             else:
-                while (e-1) >= b and height[e] > height[e-1]:
-                    e -= 1
-
-                e -= 1
+                t = s.pop()
+                v = (i - s[-1] - 1) if s else i # If s is empty, h[t] is the min value, so area is h[t]*i
+                max_a = max(max_a, h[t] * v)
 
         return max_a
 
