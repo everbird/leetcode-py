@@ -15,44 +15,14 @@ class Solution:
     # @param {integer[]} inorder
     # @return {TreeNode}
     def buildTree(self, preorder, inorder):
-        leni = len(inorder)
-        lenp = len(preorder)
-        if leni == 0 or lenp == 0:
+        if not inorder or not preorder:
             return None
 
-        if leni == 1:
-            return TreeNode(inorder[0])
-
-        index = 0
-        while index < lenp and preorder[index] not in inorder:
-            index += 1
-
-        if index == lenp:
-            return
-
-        p = preorder[index]
-
+        p = preorder.pop(0)
         t = TreeNode(p)
-
-        k = 0
-        for i in range(leni):
-            if inorder[i] == p:
-                k = i
-                break
-
-        left = inorder[:k]
-        right = inorder[k+1:]
-
-        if not left and not right:
-            return None
-
-        leftn = self.buildTree(preorder[1:], left)
-        if leftn:
-            t.left = leftn
-
-        rightn = self.buildTree(preorder[1:], right)
-        if rightn:
-            t.right = rightn
+        k = inorder.index(p)
+        t.left = self.buildTree(preorder, inorder[:k])
+        t.right = self.buildTree(preorder, inorder[k+1:])
 
         return t
 
