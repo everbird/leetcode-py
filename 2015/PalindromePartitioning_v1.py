@@ -23,8 +23,7 @@ class Solution:
                 a = self.partition(s[:i])
                 for j in a:
                     t = j + [s[i:]]
-                    if t not in r:
-                        r.append(t)
+                    r.append(t)
         return r
 
     def is_palindrome(self, s):
