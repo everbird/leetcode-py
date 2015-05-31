@@ -15,10 +15,14 @@ class Solution:
             for j in range(i+1):
                 if i+j < lens and s[i-j] == s[i+j]:
                     r[i+j+1] = min(r[i+j+1], r[i-j] + 1)
+                else:
+                    break
 
             for j in range(1, i+2):
                 if i+j < lens and s[i-j+1] == s[i+j]:
                     r[i+j+1] = min(r[i+j+1], r[i-j+1] + 1)
+                else:
+                    break
 
         return r[lens]
 
@@ -31,3 +35,4 @@ if __name__ == '__main__':
     print s.minCut('')
     print s.minCut('aabcbd')
     print s.minCut('fifgbeajcacehiicccfecbfhhgfiiecdcjjffbghdidbhbdbfbfjccgbbdcjheccfbhafehieabbdfeigbiaggchaeghaijfbjhi')
+    print s.minCut('cabababcbc')
