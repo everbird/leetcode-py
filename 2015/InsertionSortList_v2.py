@@ -29,9 +29,6 @@ class Solution:
         pre = helper
         next = None
         while cur:
-            if pre.val > cur.val:
-                pre = helper
-
             next = cur.next
             while pre.next and pre.next.val < cur.val:
                 pre = pre.next
@@ -39,8 +36,8 @@ class Solution:
             cur.next = pre.next
             pre.next = cur
 
-            ## Reset
-            #pre = helper
+            # Reset
+            pre = helper
 
             cur = next
 
