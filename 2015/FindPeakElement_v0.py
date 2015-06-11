@@ -21,9 +21,7 @@ class Solution:
             if nums[mid-1] < nums[mid] > nums[mid+1]:
                 return mid
             elif nums[mid-1] < nums[mid] < nums[mid+1]:
-                b = mid + 1
-            elif nums[mid-1] > nums[mid] > nums[mid+1]:
-                e = mid - 1
+                b = mid
             else:
                 e = mid
 
