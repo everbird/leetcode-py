@@ -46,7 +46,7 @@ class BSTIterator:
             self.visited.add(self.h.right)
 
         self.visited.add(self.h)
-        return self.h
+        return self.h.val
 
 
 # Your BSTIterator will be called like this:
