@@ -13,6 +13,9 @@ class Solution:
         if sum(nums) < s:
             return 0
 
+        if max(nums) >= s:
+            return 1
+
         lenn = len(nums)
         if sum(nums) == s:
             return lenn
@@ -22,26 +25,24 @@ class Solution:
         for i in range(lenn):
             if sums[i] >= s:
                 _len = lenn - i
-                _sums = sums[i+1:]
                 target = sums[i] - s
-                index = self.binary_search(_sums, target)
+                index = self.binary_search(lenn, sums, i, target)
                 if index is None:
                     minl = min(minl, _len)
-                elif minl > index+1:
-                    minl = index+1
+                elif minl > (index - i)+1:
+                    minl = (index - i)+1
 
         return minl
 
 
-    def binary_search(self, sums, target):
-        if not sums:
+    def binary_search(self, lenn, sums, b, target):
+        if not lenn:
             return
 
         if target < sums[-1]:
             return
 
-        b = 0
-        e = len(sums) - 1
+        e = lenn - 1
         while b <= e:
             mid = (b+e) // 2
             if sums[mid] <= target:
