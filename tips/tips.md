@@ -23,4 +23,11 @@ merge sort 思路，two pointer 累计执行 n // 2 + 1 次，需记录 pre 元�
 初始化有 nRows 个列表的列表r，用 i 来记当前 row 的index，flag 为 1或-1 记方向，当 i == nRows-1 或 0 时反转 flag。最后逐行遍历 r，输出字符串
 
 
+## Reverse Integer
+首先用 1 或 -1 记录符号，设另一个变量r，r = r * 10 + n % 10, n = n // 10，注意若溢出则返回0
 
+
+## Word Break
+递归比较容易想到，但时间复杂度最坏情况 O(2^n)，最好情况O(1)，效率有问题；
+若用 cache 的方式，即沿用上述递归思路，但加上 cache 装饰器用于记录输入和输出，相当于一个 loop 找匹配前缀，一个 loop 递归向下找所有后缀并 cache，最多有 n 个后缀，所以复杂度是 O(n^2)
+也可以用 DP 的方式，一维数组`dp[n] = dp[i] and s[i:n] in wordDict`，外层循环计算每个 dp[n]，内层循环看s[:n] 是否可以利用此公式完成分隔，最后返回 dp[-1]
