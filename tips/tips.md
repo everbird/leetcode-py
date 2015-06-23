@@ -34,3 +34,14 @@ merge sort 思路，two pointer 累计执行 n // 2 + 1 次，需记录 pre 元�
 
 ## String to Integer(atoi)
 通过首字符判断 symbol 是 1  或 -1，数字部分从左到右遍历，通过ascii 码减法用 r = r*10 + i 得到数字部分 r；最后带符号返回，但需注意溢出判断，整数上界 2**31-1，下界 -2**31，返回 `max(下界，min(上界, r))`
+
+
+##Palindrome Number
+先处理特殊 case：0 直接返回 True；0结尾或小于0 的数直接返回 False
+剩下的部分如下处理：从输入 m 右侧去掉数字 i ，并将其放在 r 的左侧，即：
+```
+i = m % 10
+m = m // 10
+r = r*10 + i
+```
+直到 r >= m，此时若为奇数回文，中心点在r；若为偶数回文，r==m；故返回 `m == r or (r // 10) == m`
