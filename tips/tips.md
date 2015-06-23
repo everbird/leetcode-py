@@ -45,3 +45,12 @@ m = m // 10
 r = r*10 + i
 ```
 直到 r >= m，此时若为奇数回文，中心点在r；若为偶数回文，r==m；故返回 `m == r or (r // 10) == m`
+
+
+## Regular Expression Matching
+先处理特殊 case：pattern 和输入为空时返回 True，否则 pattern 为空时返回 False
+剩下部分从 pattern 尾部开始看最后一个字符 p
+若 p 非 ‘*’，p ==  s[-1] 或 p == ‘.’ 的话，递归，用少末尾字符串的 pattern 和 s 的子字符串作为输入
+若 p == ‘*’，看 p 前一位字符串 rep，
+1) rep == s[-1] 或 rep == ‘.’就递归看两种情况，一种 pattern 不变，s 少末尾一个字符；另一种 pattern 少末尾两个字符，s 不变。两者取或。
+2) 如非上述情况，说明统配部分并未有匹配，故直接递归，pattern 少末尾两个字符，s 不变
