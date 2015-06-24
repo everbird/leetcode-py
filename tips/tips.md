@@ -85,3 +85,8 @@ Two Sum 的变形，但思路类似。
 ## 3 Sum Closest
 3 Sum 的变形，用 Two pointer 即可，因为题中假设每个输入对应只有一个输出，让事情简化了不少。
 大致思路痛 3 Sum，区别在于每次内循环需计算当前 sum 值，保留sum 与预期值差最小的，最后将其返回
+
+
+## Letter Combinations of a Phone Number
+1. 比较直接的思路是递归，取少一个数字的子字符串对应的结果集，在末尾追加此数字对应的各种字母，但时间复杂度是 O(K^n) K 大概是 3
+2. 也可以借助 reduce 来做，reduce(lambda acc, dight: [x+y for x in acc for y in d[digit]], digits, [‘’])，注意初始值是 ['']
