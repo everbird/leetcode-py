@@ -97,3 +97,11 @@ Two Sum 的变形，但思路类似。
 在k > 2 时，用一个 loop 遍历数组每个数字 n，剩下的部分k -= 1，target = target - n，往下递归。所得结果和 n 合并计入 r；
 k == 2 时，用 Two Sum 得到符合当前 target 的 tuple 计入 r；
 返回 r 即可
+
+
+## Remove Nth Node From End of List 
+链表不好逆向取第几个，因此可以借助 math。
+1. a 指针先从头遍历至第 n 个 node，此时在头部设另一指针 b。
+2. while a.next is not None，a 和 b 同时向后遍历，直至 a.next 指向 None，返回此时 b.next 即为尾部算起第 n 个 node
+3. b.next = b.next.next 直接删去此 node，返回 head
+注意特殊情况，即从头遍历至第 n 时刚好 a 指向 None，说明 b坐在的头部即为要去除的 node，此时直接返回 b.next 即可
