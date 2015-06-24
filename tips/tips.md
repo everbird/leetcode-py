@@ -62,3 +62,7 @@ r = r*10 + i
 
 ## Container With Most Water
 Two pointer 递归，每次都移动较矮的一端， b=b+1 或 e=e-1 ，返回其与当前面积的最大者，递归终止条件是 b == e 时，此时返回 0
+
+
+## Integer to Roman
+倒序字典 d（可用 list + tuple） 记录 1 4 5 9 开头的对应的罗马数字，这里已经包含了字母放左右的变化，简化了很多。然后循环 d 的 k v，若k <= 输入的数字 i，则将 v append到输出右侧，而后 i-k 作为下次循环的输入，知道最后输入为 0 终止返回 ''
