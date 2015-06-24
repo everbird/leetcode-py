@@ -58,3 +58,7 @@ r = r*10 + i
 
 ## Divide Two Integers
 先判断 symbol，然后采用二进制位移的方式，a 为被除数，b 为除数，找出比 b << shift  <= a 的最大者 x，此处认为是二分查找，因为每次 b 翻倍。将这个倍数不断累加到结果 r 中（相当每次得到二进制的r的一位 bit），并从 a 中减去该次 x。最后返回 symbol * r 并且考 `max(下界, min(上界, symbol*r))` 处理溢出
+
+
+## Container With Most Water
+Two pointer 递归，每次都移动较矮的一端， b=b+1 或 e=e-1 ，返回其与当前面积的最大者，递归终止条件是 b == e 时，此时返回 0
