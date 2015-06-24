@@ -105,3 +105,7 @@ k == 2 时，用 Two Sum 得到符合当前 target 的 tuple 计入 r；
 2. while a.next is not None，a 和 b 同时向后遍历，直至 a.next 指向 None，返回此时 b.next 即为尾部算起第 n 个 node
 3. b.next = b.next.next 直接删去此 node，返回 head
 注意特殊情况，即从头遍历至第 n 时刚好 a 指向 None，说明 b坐在的头部即为要去除的 node，此时直接返回 b.next 即可
+
+
+## Valid Parentheses 
+非法的括号嵌套有特征：即右括号的前一个字符是不同的左括号。O(N) 遍历若发现符合此特征直接返回 False，否则返回 True
