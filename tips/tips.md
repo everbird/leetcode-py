@@ -109,3 +109,8 @@ k == 2 时，用 Two Sum 得到符合当前 target 的 tuple 计入 r；
 
 ## Valid Parentheses 
 非法的括号嵌套有特征：即右括号的前一个字符是不同的左括号。O(N) 遍历若发现符合此特征直接返回 False，否则返回 True
+
+
+## Merge Two Sorted Lists
+正常的链表归并排序，谁小拿走谁，被拿走的部分头指针下移。注意处理一种一个被拿空后的情况：
+`if not l2 or (l1 and l1.val < l2.val) 拿 l1 else 拿 l2`
