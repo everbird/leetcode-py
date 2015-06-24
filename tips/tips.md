@@ -90,3 +90,10 @@ Two Sum 的变形，但思路类似。
 ## Letter Combinations of a Phone Number
 1. 比较直接的思路是递归，取少一个数字的子字符串对应的结果集，在末尾追加此数字对应的各种字母，但时间复杂度是 O(K^n) K 大概是 3
 2. 也可以借助 reduce 来做，reduce(lambda acc, dight: [x+y for x in acc for y in d[digit]], digits, [‘’])，注意初始值是 ['']
+
+
+## 4 Sum
+直接推导至 k Sum，思路跟 3 Sum 类似，先排序。
+在k > 2 时，用一个 loop 遍历数组每个数字 n，剩下的部分k -= 1，target = target - n，往下递归。所得结果和 n 合并计入 r；
+k == 2 时，用 Two Sum 得到符合当前 target 的 tuple 计入 r；
+返回 r 即可
