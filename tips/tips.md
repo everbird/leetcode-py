@@ -164,3 +164,7 @@ while 循环当 is_enough 能找够 k 个时，f 若为 False 就 break。先记
 
 ## 26 Remove Duplicates from Sorted Array
 O(N) 逐项遍历，由于已经是有序的，故出现重复必然是连续某个数字重复出现，因此初始 count = 1，记录前一个数 p 和当前数 c，在 p != c 的时候，另 nums[count] = c，count += 1，即用输入 list 的前一部分存储去重结果。最后新的长度 count
+
+
+## 27 Remove Element
+O(N) 遍历，当前元素与 val 不相等时nums[i] = n, count += 1，count 初始为 0。最后返回 count
