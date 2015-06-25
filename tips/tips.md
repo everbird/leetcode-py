@@ -133,3 +133,7 @@ k == 2 时，用 Two Sum 得到符合当前 target 的 tuple 计入 r；
 排序和大顶堆的方法比较容易想到，但复杂度分别为 O(NlogN) 和 O(N+kLogN)。
 借鉴 Quick Sort 的方式，每次找 pivot 做 partition，看 pivot 是否为 k，若pivot < k则 left = pivot + 1 否则 right = pivot - 1。partition 方法可以先认为尾部元素是 pivot，用 swap 实现，但最坏情况是 O(N^2)，一般情况为 O(N)。
 改进可随机取 pivot，排序时间不依赖于输入是否有序，最坏情况还是 O(N^2)，认为复杂度是 O(N)
+
+
+## 23 Merge k Sorted Lists
+分治法，分为两半递归，然后将两者 merge sort 归并；归并部分同 Merge Two Sorted Lists。
