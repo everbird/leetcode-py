@@ -160,3 +160,7 @@ while 循环当 is_enough 能找够 k 个时，f 若为 False 就 break。先记
 然后 p = h，h = b.next if b else None 进入下次循环
 由于最后一次 f 为 False break 出来，仍需 p.next = h 链接好剩下的部分。
 为了方便获取返回的头节点，开始用 r = p = ListNode(0) 作为辅助节点，最终结果返回 r.next 即可，因为这是 p 第一次链接翻转后头部的位置
+
+
+## 26 Remove Duplicates from Sorted Array
+O(N) 逐项遍历，由于已经是有序的，故出现重复必然是连续某个数字重复出现，因此初始 count = 1，记录前一个数 p 和当前数 c，在 p != c 的时候，另 nums[count] = c，count += 1，即用输入 list 的前一部分存储去重结果。最后新的长度 count
