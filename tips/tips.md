@@ -137,3 +137,17 @@ k == 2 时，用 Two Sum 得到符合当前 target 的 tuple 计入 r；
 
 ## 23 Merge k Sorted Lists
 分治法，分为两半递归，然后将两者 merge sort 归并；归并部分同 Merge Two Sorted Lists。
+
+
+## 24 Swap Nodes in Pairs
+普通链表题，记录遍历时记录当前节点c、前节点p、后节点n，然后 while c and c.next：
+```
+t = n.next if n else None 记录下次 loop 的节点
+c.next = t 
+n.next = c
+p.next = n
+p = c  下次的连接点
+
+c = t c指向下次的当前节点
+```
+循环结束后，要记得 p.next = c，最后返回 head.next，因为结果链表必然是 head.next 为头。特殊情况空链表或只有一个 node 的，返回 head 即可
