@@ -119,3 +119,11 @@ k == 2 时，用 Two Sum 得到符合当前 target 的 tuple 计入 r；
 ## 227 Basic Calculator II
 输入中无括号，且均为非负数，故可以直接用 split，外层 loop 低优先级的 +-，内层 loop 计算 */ 的表达式。
 单独计算 */ 表达式时按照从左到右的顺序即可，具体做法可以分两步，第一步获取 numbers 和 ops 数组，第二部遍历 ops，用 numbers[i+1] 存 i 位移时的计算结果，表达式返回 numbers[-1]。
+
+
+## 22 Generate Parentheses
+用递归并记录当前字符串及还需左右括号的数量，计入 list r 返回。要生成合法的括号组合：
+1. left == 0 而 right > 0 时，全部用右括号补齐计入 r
+2. `0 < left < right` 时，分别递归追加左括号和右括号，计入 r
+3. left == right 且不为 0 时，只能追加左括号，计入 r
+4. 其他情况不会出现，否则必然不是合法的括号组合
