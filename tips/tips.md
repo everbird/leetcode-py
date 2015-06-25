@@ -127,3 +127,9 @@ k == 2 时，用 Two Sum 得到符合当前 target 的 tuple 计入 r；
 2. `0 < left < right` 时，分别递归追加左括号和右括号，计入 r
 3. left == right 且不为 0 时，只能追加左括号，计入 r
 4. 其他情况不会出现，否则必然不是合法的括号组合
+
+
+## 215 Kth Largest Element in an Array
+排序和大顶堆的方法比较容易想到，但复杂度分别为 O(NlogN) 和 O(N+kLogN)。
+借鉴 Quick Sort 的方式，每次找 pivot 做 partition，看 pivot 是否为 k，若pivot < k则 left = pivot + 1 否则 right = pivot - 1。partition 方法可以先认为尾部元素是 pivot，用 swap 实现，但最坏情况是 O(N^2)，一般情况为 O(N)。
+改进可随机取 pivot，排序时间不依赖于输入是否有序，最坏情况还是 O(N^2)，认为复杂度是 O(N)
