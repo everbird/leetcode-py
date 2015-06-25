@@ -151,3 +151,12 @@ p = c  下次的连接点
 c = t c指向下次的当前节点
 ```
 循环结束后，要记得 p.next = c，最后返回 head.next，因为结果链表必然是 head.next 为头。特殊情况空链表或只有一个 node 的，返回 head 即可
+
+
+## 25 Reverse Nodes in k-Group
+is_enough 函数从当前节点向后找 k 个，若找够了 k 个，则返回 True, 当前节点h，第 k 个节点 b；否则返回 False, 当前节点h，None
+reverse 用于翻转从当前节点算起的 k 个节点，无需返回
+while 循环当 is_enough 能找够 k 个时，f 若为 False 就 break。先记录下次起始节点 c= b.next，用 reverse 从当前 h 处翻转 k 个，然后将上次结果的尾部 p.next = b，h.next = c 链接好新的头尾
+然后 p = h，h = b.next if b else None 进入下次循环
+由于最后一次 f 为 False break 出来，仍需 p.next = h 链接好剩下的部分。
+为了方便获取返回的头节点，开始用 r = p = ListNode(0) 作为辅助节点，最终结果返回 r.next 即可，因为这是 p 第一次链接翻转后头部的位置
