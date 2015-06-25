@@ -114,3 +114,8 @@ k == 2 时，用 Two Sum 得到符合当前 target 的 tuple 计入 r；
 ## Merge Two Sorted Lists
 正常的链表归并排序，谁小拿走谁，被拿走的部分头指针下移。注意处理一种一个被拿空后的情况：
 `if not l2 or (l1 and l1.val < l2.val) 拿 l1 else 拿 l2`
+
+
+## 227 Basic Calculator II
+输入中无括号，且均为非负数，故可以直接用 split，外层 loop 低优先级的 +-，内层 loop 计算 */ 的表达式。
+单独计算 */ 表达式时按照从左到右的顺序即可，具体做法可以分两步，第一步获取 numbers 和 ops 数组，第二部遍历 ops，用 numbers[i+1] 存 i 位移时的计算结果，表达式返回 numbers[-1]。
