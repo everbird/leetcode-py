@@ -2,26 +2,39 @@
 # encoding: utf-8
 
 
+from collections import defaultdict
+
+
 class Solution:
     # @param {integer[]} nums
-    # @return {integer}
-    def majorityElement(self, nums):
-        counter = 1
-        candidate = nums[0]
-        for i in range(1, len(nums)):
-            x = nums[i]
-            if counter == 0:
-                candidate = x
-                counter += 1
-            elif x == candidate:
-                counter += 1
+    # @return {integer[]}
+    def majorityElement(self, nums, m=2):
+        lenn = len(nums)
+        d = defaultdict(int)
+        for n in nums:
+            if n in d or len(d) < m:
+                d[n] += 1
             else:
-                counter -= 1
+                for k, v in d.items():
+                    if v == 0:
+                        d.pop(k)
+                    else:
+                        d[k] -= 1
 
-        return candidate
+        for k in d:
+            d[k] = 0
+        for n in nums:
+            if n in d:
+                d[n] += 1
 
+        r = []
+        for k, v in d.iteritems():
+            if v > lenn // m:
+                r.append(k)
+
+        return r[0] if m == 2 else r
 
 
 if __name__ == '__main__':
     s = Solution()
-    print s.majorityElement([3,1,2,3,2,3,3])
+    print s.majorityElement([2,1,2,1,3,1,1], 2)
