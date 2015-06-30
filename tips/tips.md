@@ -202,3 +202,6 @@ O(logN) 二叉搜索找 pivot，然后再二叉搜索找 pivot 两侧的元素 i
 
 ## 35 Search Insert Position
 二叉搜索，最后未找到时判断 nums[mid] 和 输入k 的关系，nums[mid] > k 返回 mid，否则返回 mid+1
+
+## 36 Valid Sudoku
+根据数独的规则，按照行、列、3*3 方格逐个验证 unique，一旦发现不符就return False，否则通过检查
