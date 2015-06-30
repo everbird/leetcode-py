@@ -209,3 +209,7 @@ O(logN) 二叉搜索找 pivot，然后再二叉搜索找 pivot 两侧的元素 i
 
 ## 37 Sudoku Solver
 用 backtrace 思路，find_unassigned 找到未填的位置，逐个数字验证是否 is_safe，用 is_solved 方法递归，一旦 is_solved 为 True 就返回 True，否则将该次处理的位置置回 ‘.'
+
+## 38 Count and Say
+先实现单词处理函数：逐个字符遍历输入字符串，记录上一个字符为 p，若p为None重置 count = 1，否则p != c 时向结果 r 拼接 str(count) + p；p == c 时 count += 1。遍历结束后需记得将剩下的 count 和 p 拼接，r + str(count) + p
+将’1’作为初始值，输出作为输入循环 n -1 次即为结果
