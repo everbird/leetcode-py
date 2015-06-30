@@ -194,3 +194,8 @@ O(logN) 二叉搜索找 pivot，然后再二叉搜索找 pivot 两侧的元素 i
 2. 若 nums[0] < nums[mid] > nums[-1] 则继续丢弃左边，因为其为递增，而 pivot 必然在右侧；
 3. 若 nums[0] > nums[mid] < nums[-1] 则丢弃右侧，因为右侧递增，而 pivot 必然在左侧
 用 O(N) 的方法可以很见到找到 pivot，若卡住可以先用 O(N) 的解法找到 pivot 先
+
+
+## 34 Search for a Range 
+要求 O(logN) 所以二叉搜索变种，对于 mid 初始 l = r = mid，然后 l 向左 r 向右 while 找到边界。
+上述用 while 找边界在重复较多时复杂度会趋向于 O(N)，改为用二叉搜索找边界更合适。
