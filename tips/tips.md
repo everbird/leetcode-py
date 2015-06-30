@@ -205,3 +205,7 @@ O(logN) 二叉搜索找 pivot，然后再二叉搜索找 pivot 两侧的元素 i
 
 ## 36 Valid Sudoku
 根据数独的规则，按照行、列、3*3 方格逐个验证 unique，一旦发现不符就return False，否则通过检查
+
+
+## 37 Sudoku Solver
+用 backtrace 思路，find_unassigned 找到未填的位置，逐个数字验证是否 is_safe，用 is_solved 方法递归，一旦 is_solved 为 True 就返回 True，否则将该次处理的位置置回 ‘.'
