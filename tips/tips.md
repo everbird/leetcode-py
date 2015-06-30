@@ -213,3 +213,7 @@ O(logN) 二叉搜索找 pivot，然后再二叉搜索找 pivot 两侧的元素 i
 ## 38 Count and Say
 先实现单词处理函数：逐个字符遍历输入字符串，记录上一个字符为 p，若p为None重置 count = 1，否则p != c 时向结果 r 拼接 str(count) + p；p == c 时 count += 1。遍历结束后需记得将剩下的 count 和 p 拼接，r + str(count) + p
 将’1’作为初始值，输出作为输入循环 n -1 次即为结果
+
+
+## 39 Combination Sum
+C排序，由于 C 元素可重复使用，且结果需为递增，所以直接递归f，遍历 C 中元素，递归找f(C[i:], T-n)结果 items，对 items 中每个 list 头部插入 n。
