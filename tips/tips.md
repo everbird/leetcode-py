@@ -199,3 +199,6 @@ O(logN) 二叉搜索找 pivot，然后再二叉搜索找 pivot 两侧的元素 i
 ## 34 Search for a Range 
 要求 O(logN) 所以二叉搜索变种，对于 mid 初始 l = r = mid，然后 l 向左 r 向右 while 找到边界。
 上述用 while 找边界在重复较多时复杂度会趋向于 O(N)，改为用二叉搜索找边界更合适。
+
+## 35 Search Insert Position
+二叉搜索，最后未找到时判断 nums[mid] 和 输入k 的关系，nums[mid] > k 返回 mid，否则返回 mid+1
