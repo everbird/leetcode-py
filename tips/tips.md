@@ -241,6 +241,8 @@ DP，遍历 pattern 逐个字母c，dp 数组长度为 s 长度+1，表示子 pa
 
 ## 230 Kth Smallest Element in a BST
 1. 每次去掉最小节点，这样空间复杂度最小，时间复杂度为 O(KlogN)。
+2. 用 list 在中序遍历时存下每个节点，然后返回 list 的 list[k-1].val，可以稍作裁剪，判断 len(list) == k 时返回 None，可跳过后面不必要的递归
+3. 用 self.count 记录遍历节点数，中序遍历过程中 self.count+=1，当 count == k 时将节点记在 self.r 中，对于 self.count >= k 的情况直接返回 None 跳过后面不必要的递归
 
 
 ## EXP: Longest ZigZag subsequence
@@ -274,3 +276,6 @@ return: max(up+down)
 1. 当 cur 是 0 时，算多了 1<right> 的情况，而这个数量是 10**i，所以 v -= 10**i
 2. 当 cur 是 1 时，算多了 1<right+> 的情况，这个数量是 (10**i - 1 - right)，所以 v-= 10**i - 1 - right
 按上述方法将 v 累计起来，即为结果
+
+
+
