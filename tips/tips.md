@@ -237,3 +237,40 @@ DP，遍历 pattern 逐个字母c，dp 数组长度为 s 长度+1，表示子 pa
 3. nums[i] != nums[nums[i]-1] 即虽然当前位置不对，但目标地址的数值和这里一样，交换也没意义
 
 遍历一遍后确保能被放置在正确位置的数字已经被放置好，再次从头遍历，一旦发现 nums[i] != i+1 的，即为第一个缺失的正数
+
+
+## 230 Kth Smallest Element in a BST
+1. 每次去掉最小节点，这样空间复杂度最小，时间复杂度为 O(KlogN)。
+
+
+## EXP: Longest ZigZag subsequence
+
+subsequence 指去掉任意元素后成为的子序列，只保留顺序，所以生成全部子序列要 O(2^N) 复杂度，因为相当于保留位置取 1，删除位置取 0，相当于 N 二进制的数量，故为  2^N
+
+substring 指连续元素组成的子串，只需确定起始位置和终止位置，而他们的选择分别是 N 和 N-1，所以生成全部子串要 O(N^2) 复杂度
+
+http://community.topcoder.com/stat?c=problem_statement&pm=1259&rd=4493
+1. Brute force 要生成所有 subseq，然后验证每个 subseq 是不是 zigzag，复杂度O(N*2^N)
+2. 动态规划，用两个数组分别记录 i 位置为末尾，上升和下降两种情况的最长结果，这样子问题可以如下描述：
+initial: up[0] = down[0] = 1
+func:
+up[i] = max([down[j]+1 for j in range(i) if a[i] > a[j] ])
+down[i] = max([up[j]+1 for j in range(i) if a[i] < a[j] ])
+
+return: max(up+down)
+之所以计算 up[i] 需要用到 a[i] > a[j] 是因为i为上升，若要子序列为上升且 zigzag，前一个位置 j 必定是下降且 j 处的值 a[j] < a[i]；同理对 down[i] 一样
+
+## 231 Power of Two
+判断 n 是否是 2 的 x 次方，从二进制的角度看即为最高位为1，其他位为0。而若成立，可以利用这样一条性质：n -1 会让所有位翻转。此时 n -1 与 n 按位做逻辑与，应该刚好得到 0。否则 n 并非 2 的 x 次方
+
+## 232 Implement Queue using Stacks
+直接用 stack 实现 queue 会发现若 push 为 O(1) 则 pop 和 peek 都会为 O(N)，因此使用一个倒置的 stack 作为数据结构来存 queue，这样 push 为 O(N)，每次都放到底部，而每次 pop 和 peek 直接用 stack 的 pop 和 peek 即可为 O(1)
+
+## 233 Number of Dight One
+找小于等于 n 的数字中所有的 1 的个数，可以按位来累计。从右开始逐位 i(从0开始) 取数字 cur，其左边为 left，右边为 right。统计 cur 出现 1 的个数时，有如下性质可以利用：
+假设将 cur 和 right 所有位都补齐到 9：
+此时比较简单，有 left+1 种情况来组成 <left>1<right>；right 也有 10**i 种情况。此时 v = (left+1)*(10**i)
+但是这时是算多了的，需要减去算多的情况：
+1. 当 cur 是 0 时，算多了 1<right> 的情况，而这个数量是 10**i，所以 v -= 10**i
+2. 当 cur 是 1 时，算多了 1<right+> 的情况，这个数量是 (10**i - 1 - right)，所以 v-= 10**i - 1 - right
+按上述方法将 v 累计起来，即为结果
