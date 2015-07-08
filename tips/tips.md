@@ -278,4 +278,11 @@ return: max(up+down)
 按上述方法将 v 累计起来，即为结果
 
 
-
+## 42 Trapping Rain Water
+Trapping Rain Water 的性质是从最高处开始向两侧，与该侧第二高处会形成水洼，然后递归下去。所以最高处两侧虽然方向不同但做法类似。
+用辅助方法 max_i 找到某段内最高值及其 index。
+1. max_i 找到整段最高处 i，两侧用 _trap 函数递归运算其储水量 return self._trap(height[:i+1], self._trap(height[i:][::-1]))，注意由于性质需要依赖之前的最高值，所以递归时要带着 i 处的值。
+2. _trap 函数计算储水量，先看几种特殊 case：
+1) 若节点数为 1 或 2，没有位置用来储水，所以直接返回 0；
+2) 若 max_i height 得到的最大值为 0，即此处是平地，故无法储水，直接返回 0；
+3) 否则开始正常计算，找出height[:-1] 的最高处 x，而之前的最高处为 height 最后一个元素 y，x左侧的部分继续带着 x 处用 _trap 递归；而剩下的部分可以计算其面积 area = (yi - xi - 1) * min(x, y)，注意 - 1 是因为边的宽度占 1，所以例如 xi = 0 yi = 2 时，只有 index 为 1处可以储水。area 还需减去除掉两边，其间的凸起处，所以遍历 height[xi+1:yi] 的每个元素 m，area -= m 即可。最后返回 self._trap(left) + area。
