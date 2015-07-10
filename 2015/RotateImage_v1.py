@@ -11,10 +11,6 @@ class Solution:
 
         for j in range(n // 2):
             for i in range((n + 1) // 2):
-                if n % 2 == 1:
-                    if i == 0 and j == ((n - 1) // 2):
-                        continue
-
                 t = matrix[j][i]
                 matrix[j][i] = matrix[n - i - 1][j]
                 matrix[n - i - 1][j] = matrix[n - j - 1][n - i - 1]
