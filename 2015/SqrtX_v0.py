@@ -16,10 +16,7 @@ class Solution:
             elif mid*mid > x:
                 e = mid - 1
             else:
-                if (mid+1)*(mid+1) > x:
-                    return mid
-                else:
-                    b = mid + 1
+                b = mid + 1
 
         return mid
 
