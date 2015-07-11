@@ -7,19 +7,13 @@ class Solution:
     # @return {boolean}
     def canJump(self, nums):
         lenn = len(nums)
-        if lenn == 1:
-            return True
-
         max_v = 0
-        for i in range(lenn):
+        for i in range(lenn-1):
             n = nums[i]
-            if n == 0 and i != (lenn - 1) and max_v <= i:
+            if n == 0 and max_v <= i:
                 return False
 
-            v = n + i
-            if max_v < v:
-                max_v = v
-
+            max_v = max(max_v, n+i)
         return True
 
 
