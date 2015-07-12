@@ -488,3 +488,13 @@ Initial Status: dp[0][0~m], dp[0~n][0] 均为对应 index 值，注意 dp 最好
 ## 75 Sort Colors
 1. 直观的方式 two-pass，一遍记数量，一遍按数量逐个填充。
 2. one-pass 的方式，相当于 左右端各有一个指针，rp指向最左侧第一个非 0 和bp 指向最右侧第一个非 2 的 index，保证左指针左边都是 0，右指针右边都是 2。i 遍历其间的各个数字，若为0 就 swap 到左指针，然后左指针右移一位，右侧同。注意存在同一位置 i 多次swap 的情况，所以 i 处需要 while nums[i] in (0, 2) 且 rp<=i<=bp，i <= bp 的每次外循环后 i+= 1
+
+## 234 Palindrome Linked List
+简单思路，list 存顺序遍历数字，然后比较 list[::-1] == list，相当于把链表简化为 list，O(N) time O(N) space
+推荐用 two pointer 找到尾部开始点，对其 reverse 后，逐个节点比较 head 和reverse 后的rhead 中各个点，若不同即终止循环，此时若 rhead 已经为 None 说明是回文，否则不是。
+reverse linked list 可以这样做：
+pre, pre.next, head = head, pre, head.next
+记住 python 这种 swap 的赋值语句 ，右侧在执行此行前已经确定，左侧才会从左到右随着赋值变化而变换。
+
+## 235 Lowest Common Ancestor of a Binary Search Tree
+其实就是从 root 开始找到第一个大小位于 p 和 q 之间的节点，如果 p q 都比节点大就向右查找，p q 都比节点小就向左查找。注意结果可以是 p 或 q。O(log(N)) time 
