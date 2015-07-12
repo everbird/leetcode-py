@@ -35,10 +35,11 @@ class Solution:
     def reverse(self, head):
         pre = None
         while head:
-            t = head.next
-            head.next = pre
-            pre = head
-            head = t
+            pre, pre.next, head = head, pre, head.next
+            #t = head.next
+            #head.next = pre
+            #pre = head
+            #head = t
 
         return pre
 
