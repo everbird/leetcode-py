@@ -25,12 +25,11 @@ class Solution:
         p = root
         while p or s:
             a.append(p.val)
+            if p.right:
+                s.append(p.right)
+
             if p.left:
-                if p.right:
-                    s.append(p.right)
                 p = p.left
-            elif p.right:
-                p = p.right
             else:
                 if s:
                     p = s.pop()

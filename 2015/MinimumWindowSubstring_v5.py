@@ -9,15 +9,16 @@ class Solution:
     # @param {string} t
     # @return {string}
     def minWindow(self, s, t):
+        sett = set(t)
         require = collections.Counter(t)
         b, e = -1, -1
         lens = len(s)
         min_win = ''
         while e < lens:
-            if b != -1 and s[b] in t:
+            if b != -1 and s[b] in sett:
                 require[s[b]] += 1
             b += 1
-            while b < e and s[b] not in t:
+            while b < e and s[b] not in sett:
                 # move left
                 b += 1
 
@@ -27,7 +28,7 @@ class Solution:
                 if e >= lens:
                     break
 
-                if s[e] in t:
+                if s[e] in sett:
                     require[s[e]] -= 1
 
             # verify

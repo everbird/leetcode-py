@@ -13,27 +13,27 @@ class Solution:
             return ''
 
         require = collections.Counter(t)
-        cmap = {x: True for x in t}
         p = 0
-        min_l = 2**31
-        rb = -1
+        r = ''
         count = len(t)
         for i, n in enumerate(s):
-            require[n] -= 1
-            if cmap.get(n) and require[n] >= 0:
-                count -= 1
+            if n in require:
+                require[n] -= 1
+                if require[n] >= 0:
+                    count -= 1
 
             while count == 0:
-                if min_l > (i - p + 1):
-                    min_l = i - p + 1
-                    rb = p
-                require[s[p]] += 1
-                if cmap.get(s[p]) and require[s[p]] > 0:
-                    count += 1
+                if not r or len(r) > (i-p+1):
+                    r = s[p:i+1]
+
+                if s[p] in require:
+                    require[s[p]] += 1
+                    if require[s[p]] > 0:
+                        count += 1
 
                 p += 1
 
-        return s[rb:rb+min_l] if min_l != 2**31 else ''
+        return r
 
 
 if __name__ == '__main__':
