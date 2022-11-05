@@ -1,7 +1,9 @@
 #!/usr/bin/eni python
 # encoding: utf-8
 
+
 class Solution(object):
+
     def fairCandySwap(self, A, B):
         a = sum(A)
         b = sum(B)
