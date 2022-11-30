@@ -76,3 +76,27 @@ class Solution:
             r.extend(sorted(emails))
             rs.append(r)
         return rs
+
+
+def n2cidr(ip, n):
+    reserve = 32 - n
+    n = ip2int(ip)
+    decimals = []
+    m = 3
+    while reserve >= 8:
+        mask = 256 ** m
+        d = n // mask 
+        decimals.append(d)
+        n = n % mask
+        m -= 1
+        reserve -= 8
+
+    k = 32
+    if reserve > 0:
+        k -= reserve
+        decimals.append(n)
+
+    return "{}/{}".format(
+        ".".join(map(str, decimals)),
+        k
+    )
